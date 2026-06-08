@@ -30,4 +30,16 @@ if menu == "🏠 Panel General":
     col1.metric("Total Pedidos", total_ped)
     col2.metric("Total Docenas", total_doc)
     if total_ped > 0:
-        
+        fig = px.pie(st.session_state.pedidos, names='estado', title="Estado de Pedidos")
+        st.plotly_chart(fig)
+    else: st.info("No hay datos aún.")
+
+elif menu == "🛒 Pedidos":
+    st.title("🛒 Gestión de Pedidos")
+    with st.form("f_ped"):
+        c1, c2, c3 = st.columns(3)
+        f = c1.date_input("Fecha")
+        cl = c2.text_input("Cliente")
+        m = c3.selectbox("Modelo", st.session_state.db_productos['modelo'].tolist())
+        c4, c5, c6 = st.columns(3)
+        co = c4.text_input("Color")
