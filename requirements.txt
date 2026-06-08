@@ -1,1 +1,4 @@
-una debajo de la otra 
+streamlit
+pandas
+plotly
+
