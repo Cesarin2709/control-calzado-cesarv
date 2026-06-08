@@ -27,4 +27,5 @@ if 'db_productos' not in st.session_state:
         ["C12502101", "MESSI", "BLANCO CELESTE", "39/42", "CABALLERO", "Deportivas", "CAUCHO"],
         ["C21609101", "ZOOM 09", "NEGRO PLATA", "39/42", "CABALLERO", "Deportivas", "CAUCHO"],
         ["C22504101", "ALFA", "AM.LIMON FUCSIA", "39/42", "CABALLERO", "Deportivas", "CAUCHO"],
+
     ], columns=["
