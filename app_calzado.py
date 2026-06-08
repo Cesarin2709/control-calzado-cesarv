@@ -1,18 +1,6 @@
-Excelente elección. Vamos a crear un **MVP (Producto Mínimo Viable)** utilizando **Streamlit**. Es la herramienta más potente para convertir datos en una aplicación web interactiva rápidamente sin necesidad de configurar servidores complejos.
 
-Voy a escribirte el código completo. Este programa hará lo siguiente:
-1. **Simulará la Base de Datos**: Usará un archivo CSV local para guardar todo (Catálogo y Pedidos).
-2. **Pestaña de Catálogo**: Para registrar modelos y colores.
-3. **Pestaña de Pedidos**: Un formulario inteligente para ingresar órdenes con cálculo automático de docenas y pares.
-4. **Dashboard Interactivo**: Gráficos de barras y tablas detalladas para analizar qué se pide más.
 
-### 🛠️ Instrucciones para ejecutarlo:
-1. Instala Python en tu PC.
-2. Abre tu terminal y escribe: `pip install streamlit pandas plotly`
-3. Guarda el código de abajo en un archivo llamado `app_calzado.py`.
-4. Ejecuta la app escribiendo en la terminal: `streamlit run app_calzado.py`
 
-```python
 import streamlit as st
 import pandas as pd
 import plotly.express as px
