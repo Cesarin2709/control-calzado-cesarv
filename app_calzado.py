@@ -1,13 +1,3 @@
-Para que no tengas problemas al copiar y pegar, he simplificado el código al máximo. 
-
-Sigue estos pasos exactamente:
-
-1. Ve a tu archivo `app_calzado.py` en GitHub.
-2. **Borra TODO lo que tenga el archivo.**
-3. Copia y pega este código completo. **He unido la Parte 1 y la Parte 2 en un solo bloque** y he reducido el tamaño para que el sistema no lo corte.
-
-Copia desde el primer `import` hasta el final:
-
 ```python
 import streamlit as st
 import pandas as pd
