@@ -1,37 +1,35 @@
+
 import streamlit as st
 import pandas as pd
-import plotly.express as px
 
-st.set_page_config(page_title="BRIXTON", layout="wide", page_icon="👟")
+st.set_page_config(page_title="BRIXTON", layout="wide")
 
 if 'db' not in st.session_state:
-    st.session_state.db = pd.DataFrame([
-        ["63356", "START TEJIDO", "VERDE", "23/28", "NIÑOS"],
-        ["C12502101", "MESSI", "BLANCO", "39/42", "CABALLERO"],
-    ], columns=["codigo", "modelo", "color", "talla", "tipo"])
+    st.session_state.db = pd.DataFrame([["63356", "START"], ["C125", "MESSI"]], columns=["cod", "mod"])
 
 if 'pedidos' not in st.session_state:
-    st.session_state.pedidos = pd.DataFrame(columns=["fecha", "cliente", "modelo", "color", "doc", "estado"])
+    st.session_state.pedidos = pd.DataFrame(columns=["cliente", "modelo", "doc", "estado"])
 
 st.sidebar.title("👟 BRIXTON")
-menu = st.sidebar.radio("Menú", ["🏠 Panel", "🛒 Pedidos", "📋 Órdenes", "🖼️ Catálogo"])
+menu = st.sidebar.radio("Menú", ["🏠 Panel", "🛒 Pedidos"])
 
 if menu == "🏠 Panel":
     st.title("🚀 Panel General")
-    p = st.session_state.pedidos
-    total = len(p)
-    doc_tot = p['doc'].sum() if total > 0 else 0
-    c1, c2 = st.columns(2)
-    c1.metric("Pedidos", total)
-    c2.metric("Docenas", int(doc_tot))
-    if total > 0:
-        st.plotly_chart(px.pie(p, names='estado', title="Estados"))
-    else: st.info("Sin datos.")
+    st.write(f"Total pedidos: {len(st.session_state.pedidos)}")
+    st.dataframe(st.session_state.pedidos)
 
 elif menu == "🛒 Pedidos":
-    st.title("🛒 Pedidos")
-    with st.form("f"):
-        f = st.date_input("Fecha")
+    st.title("🛒 Registrar Pedido")
+    with st.form("mi_formulario"):
         cl = st.text_input("Cliente")
-        md = st.selectbox("Modelo", st.session_state.db['modelo'].tolist())
-        co = st.text_input("Color")
+        md = st.selectbox("Modelo", st.session_state.db['mod'].tolist())
+        dc = st.number_input("Docenas", min_value=0)
+        es = st.selectbox("Estado", ["Pendiente", "Listo"])
+        
+        # ESTA ES LA LÍNEA QUE FALTABA:
+        boton = st.form_submit_button("Guardar Pedido")
+        
+        if boton:
+            nuevo = {"cliente": cl, "modelo": md, "doc": dc, "estado": es}
+            st.session_state.pedidos = pd.concat([st.session_state.pedidos, pd.DataFrame([nuevo])], ignore_index=True)
+            st.success("¡Pedido guardado con éxito!")
