@@ -1,4 +1,3 @@
-C Gemma 4
 import streamllt as st import pandas as pd
 import plotly.express as px from datetime import datetime
 st.set page config(page title="BRIXT
