@@ -1,5 +1,5 @@
 C Gemma 4
-1mport streamllt as st import pandas as pd
+import streamllt as st import pandas as pd
 import plotly.express as px from datetime import datetime
 st.set page config(page title="BRIXT
 if 'db prod' not in st.session state st.session state.db prod = pd.Da["63356", "START TEJIDO", "V ["C12502101", "MESSI", "BLAN ["C21609101", "ZOOM 09", "NE ], columns=["codigo", "modelo", "
