@@ -64,4 +64,4 @@ elif menu == "📋 Órdenes":
         p = peds.iloc[sel]
         st.markdown(f"""
         <div style="background:white; padding:20px; border:2px solid #1a3a5c; border-radius:10px; color:black">
-            <h2 style="text-
+            <h2 style="text-align:center; color:#
