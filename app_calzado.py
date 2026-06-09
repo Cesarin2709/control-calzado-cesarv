@@ -29,13 +29,6 @@ if menu == "🏠 Panel":
         st.dataframe(st.session_state.pedidos, use_container_width=True)
     else:
         st.info("Aún no hay pedidos registrados.")
-```
-
----
-
-### 📦 PARTE 2 (Pégala justo debajo de la Parte 1)
-
-```python
 elif menu == "🛒 Pedidos":
     st.title("🛒 Registrar Pedido")
     if df_catalogo.empty:
