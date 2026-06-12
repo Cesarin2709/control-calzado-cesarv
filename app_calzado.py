@@ -1,8 +1,29 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
+import streamlit.components.v1 as components
+import os
 
 st.set_page_config(page_title="BRIXTON Control", layout="wide", page_icon="👟")
+
+# --- VERCEL SPEED INSIGHTS INTEGRATION ---
+def inject_speed_insights():
+    """
+    Inject Vercel Speed Insights tracking script.
+    This works automatically when deployed on Vercel with Speed Insights enabled.
+    """
+    # Only inject in production (when deployed on Vercel)
+    if os.getenv('VERCEL_ENV') == 'production':
+        speed_insights_script = """
+        <script>
+            window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+        </script>
+        <script defer src="/_vercel/speed-insights/script.js"></script>
+        """
+        components.html(speed_insights_script, height=0, width=0)
+
+# Inject Speed Insights at the start of the app
+inject_speed_insights()
 
 # --- CARGA DE DATOS DEL EXCEL ---
 @st.cache_data
@@ -91,4 +112,8 @@ elif menu == "🖼️ Catálogo":
         busqueda = st.text_input("🔍 Buscar modelo, código o color...")
         if busqueda:
             filtro = df_catalogo[df_catalogo.apply(lambda row: busqueda.lower() in str(row).lower(), axis=1)]
-            st.dataframe(filtro,  
+            st.dataframe(filtro, use_container_width=True)
+        else:
+            st.dataframe(df_catalogo, use_container_width=True)
+    else:
+        st.error("⚠️ El catálogo no se ha cargado correctamente.")
